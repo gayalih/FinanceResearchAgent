@@ -1,0 +1,54 @@
+<div class="summary-badges">
+  <div class="badge" [class]="ratios.summary.marginTrend">
+    <span class="icon">{{ trendIcon(ratios.summary.marginTrend) }}</span>
+    Profit margin: {{ ratios.summary.marginTrend }}
+  </div>
+  <div class="badge" [class]="ratios.summary.roeTrend">
+    <span class="icon">{{ trendIcon(ratios.summary.roeTrend) }}</span>
+    ROE: {{ ratios.summary.roeTrend }}
+  </div>
+  <div class="badge" [class]="ratios.summary.leverageTrend">
+    <span class="icon">{{ trendIcon(ratios.summary.leverageTrend) }}</span>
+    Leverage: {{ ratios.summary.leverageTrend }}
+  </div>
+</div>
+
+<div class="cagr-row">
+  <div class="cagr-tile">
+    <span class="label">Revenue CAGR</span>
+    <span class="value">{{ pct(ratios.summary.revenueCagrPct) }}</span>
+  </div>
+  <div class="cagr-tile">
+    <span class="label">Net Income CAGR</span>
+    <span class="value">{{ pct(ratios.summary.netIncomeCagrPct) }}</span>
+  </div>
+  <div class="cagr-tile">
+    <span class="label">EPS CAGR</span>
+    <span class="value">{{ pct(ratios.summary.epsCagrPct) }}</span>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Fiscal Year</th>
+        <th>Revenue growth</th>
+        <th>Net margin</th>
+        <th>ROE</th>
+        <th>Debt / Equity</th>
+        <th>EPS growth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let y of ratios.years">
+        <td class="fy">{{ y.fiscalYear }}</td>
+        <td>{{ pct(y.revenueGrowthPct) }}</td>
+        <td>{{ pct(y.netProfitMarginPct) }}</td>
+        <td>{{ pct(y.roePct) }}</td>
+        <td>{{ ratio(y.debtToEquity) }}</td>
+        <td>{{ pct(y.epsGrowthPct) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

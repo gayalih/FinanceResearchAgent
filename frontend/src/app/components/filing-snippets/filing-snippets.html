@@ -1,0 +1,12 @@
+<div class="filings" *ngFor="let result of results">
+  <p class="query">"{{ result.query }}"</p>
+  <div class="snippet" *ngFor="let s of result.snippets">
+    <div class="snippet-meta">
+      <span class="form-badge">{{ s.form }}</span>
+      <span class="filed">filed {{ s.filingDate }}</span>
+      <a [href]="s.url" target="_blank" rel="noopener">source ↗</a>
+    </div>
+    <p class="snippet-text">{{ s.text }}</p>
+  </div>
+  <p class="note" *ngIf="result.snippets.length === 0">{{ result.note }}</p>
+</div>

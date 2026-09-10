@@ -1,0 +1,31 @@
+.chart {
+  width: 100%;
+
+  h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .line {
+    stroke-width: 2;
+  }
+
+  .end-label {
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--text-primary);
+  }
+
+  .axis-label {
+    font-size: 10px;
+    fill: var(--text-secondary);
+  }
+}

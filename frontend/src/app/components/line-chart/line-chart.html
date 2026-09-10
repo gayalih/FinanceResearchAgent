@@ -1,0 +1,32 @@
+<div class="chart">
+  <h4 *ngIf="title">{{ title }}</h4>
+  <svg [attr.viewBox]="'0 0 ' + width + ' ' + height" preserveAspectRatio="xMidYMid meet" role="img">
+    <path class="line" [attr.d]="pathD()" [attr.stroke]="color" fill="none" />
+    <circle
+      *ngIf="firstPoint() as p"
+      [attr.cx]="p.x"
+      [attr.cy]="p.y"
+      r="3"
+      [attr.fill]="color"
+    />
+    <circle
+      *ngIf="lastPoint() as p"
+      [attr.cx]="p.x"
+      [attr.cy]="p.y"
+      r="3"
+      [attr.fill]="color"
+    />
+    <text
+      *ngIf="lastPoint() as p"
+      class="end-label"
+      [attr.x]="p.x"
+      [attr.y]="p.y - 10"
+      text-anchor="end"
+    >
+      {{ valueFormatter(p.value) }}
+    </text>
+    <g *ngFor="let p of xLabels()">
+      <text class="axis-label" [attr.x]="p.x" [attr.y]="height - 8" text-anchor="middle">{{ p.label }}</text>
+    </g>
+  </svg>
+</div>

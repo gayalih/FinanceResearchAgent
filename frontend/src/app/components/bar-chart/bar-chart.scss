@@ -1,0 +1,32 @@
+.chart {
+  width: 100%;
+
+  h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .baseline {
+    stroke: var(--border);
+    stroke-width: 1;
+  }
+
+  .value-label {
+    font-size: 11px;
+    fill: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .axis-label {
+    font-size: 11px;
+    fill: var(--text-secondary);
+  }
+}

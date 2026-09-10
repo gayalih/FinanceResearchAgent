@@ -1,0 +1,25 @@
+<div class="trace-list">
+  <div class="trace-item" *ngFor="let entry of trace; let i = index" [class.error]="!entry.ok">
+    <button class="trace-header" (click)="toggle(i)" type="button">
+      <span class="status-dot" [class.ok]="entry.ok" [class.fail]="!entry.ok"></span>
+      <span class="tool-name">{{ label(entry.tool) }}</span>
+      <span class="duration">{{ entry.durationMs }}ms</span>
+      <span class="chevron">{{ isExpanded(i) ? '−' : '+' }}</span>
+    </button>
+    <div class="trace-body" *ngIf="isExpanded(i)">
+      <div class="section">
+        <span class="section-title">input</span>
+        <pre>{{ pretty(entry.input) }}</pre>
+      </div>
+      <div class="section" *ngIf="entry.ok">
+        <span class="section-title">output</span>
+        <pre>{{ pretty(entry.output) }}</pre>
+      </div>
+      <div class="section" *ngIf="!entry.ok">
+        <span class="section-title">error</span>
+        <pre class="error-text">{{ entry.error }}</pre>
+      </div>
+    </div>
+  </div>
+  <p class="empty" *ngIf="trace.length === 0">No tool calls yet.</p>
+</div>
